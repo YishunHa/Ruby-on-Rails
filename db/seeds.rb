@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+moderator = Moderator.create(
+  fullname: "Yishun Xia",
+  username: "yal0858@gmail.com",
+  password: "x12345"
+)
