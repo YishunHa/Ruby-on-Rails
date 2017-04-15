@@ -1,5 +1,6 @@
 <h1>Admin::Posts#new</h1>
 
+<%= render 'validation_errors', object: @post %>
 
 <%= form_for [:admin, @post] do |f| %>
     <p>
