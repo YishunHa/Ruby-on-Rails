@@ -5,7 +5,7 @@ module Admin::TagsHelper
       content_tag(:button, 'Delete', class: 'disabled')
       end
        else
-       link_to edit_admin_tag_path(tag), method: :delete do
+       link_to admin_tag_path(tag), method: :DELETE do
       content_tag(:button, 'Delete')
       end
      end

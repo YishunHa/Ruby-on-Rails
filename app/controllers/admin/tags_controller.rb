@@ -29,6 +29,10 @@ class Admin::TagsController < Admin::ApplicationController
   end
 
   def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+
+    redirect_to :back, notice: 'Deleted tag successfully'
   end
 
   private
