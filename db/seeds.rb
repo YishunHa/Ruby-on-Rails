@@ -39,4 +39,10 @@ message = Message.create(
   visitor: visitor
 )
 
+notifiable = [visitor, comment].sample
+
+notification = Notification.create(
+    notifiable_id: notifiable.id,
+    notifiable_type: notifiable.class.name)
+
 end
