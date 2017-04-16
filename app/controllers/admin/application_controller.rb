@@ -18,8 +18,10 @@ class Admin::ApplicationController < ActionController::Base
    def to_bool string
       if string == 'true'
         true
-      else
+      elsif string == 'false'
         false
+      else
+        ''
       end
    end
 end
