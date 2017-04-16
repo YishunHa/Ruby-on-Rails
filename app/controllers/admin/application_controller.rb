@@ -14,4 +14,12 @@ class Admin::ApplicationController < ActionController::Base
        redirect_to '/login', alert: 'Please login to view the admin page'
      end
    end
+
+   def to_bool string
+      if string == 'true'
+        true
+      else
+        false
+      end
+   end
 end

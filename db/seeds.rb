@@ -23,4 +23,15 @@ tag = Tag.create(name: Faker::Lorem.word)
 
 post_tag = PostTag.create(post: post, tag: tag)
 
+visitor = Visitor.create(
+    fullname: Faker::Name.name,
+    email: Faker::Internet.email)
+
+comment = Comment.create(
+   message: Faker::Lorem.paragraph,
+   status: [true, false].sample,
+   post: post,
+   visitor: visitor)
+
+
 end
