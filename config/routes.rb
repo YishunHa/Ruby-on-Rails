@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  root to: 'posts#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/login' => 'admin/sessions#new'
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :moderators, only: [:index, :edit, :update]
   end
+
+   resources :posts, only: [:index, :show]
+   resources :messages, only: [:new, :create]
 
   match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
 end

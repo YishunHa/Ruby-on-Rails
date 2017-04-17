@@ -1,7 +1,7 @@
 <h1>Visitors</h1>
 
 
-<%= @visitors.each do |visitor| %>
+<% @visitors.each do |visitor| %>
    <p><%= visitor.fullname %></p>
    <p><%= visitor.email %></p>
    <p><%= time_ago visitor.created_at %></p>

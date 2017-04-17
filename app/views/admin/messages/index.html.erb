@@ -4,7 +4,7 @@
   <%= render 'search', route: admin_messages_path %>
 </p>
 
-<%= @messages.each do |message| %>
+<% @messages.each do |message| %>
 <p style=<%= message_weight(message) %>>
   <%= message.visitor.fullname %><br>
   <%= truncate(message.content, length: 60, separator: '') %><br>
