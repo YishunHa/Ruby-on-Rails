@@ -23,6 +23,16 @@
 
 
 <%= form_for @visitor_comment, url: comments_url do |f| %>
+  <% if session[:visitor_errors] %>
+  <div class="" id="error_explanation">
+    <h2><%= pluralize(session[:visitor_errors].count, "error") %> occur when try to save this comment:</h2>
+    <ul>
+      <% session[:visitor_errors].each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
    <p>
      <%= f.label :fullname %>
