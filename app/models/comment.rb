@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :visitor, required: false
   has_many :notifications, as: :notifiable, dependent: :destroy
 
+ validates :message, presence: true
+
  scope :approved, -> { where status: true }
 
 
