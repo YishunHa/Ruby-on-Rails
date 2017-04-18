@@ -1,65 +1,91 @@
-<h1>Posts#show</h1>
+<div class="container">
+		<div class="row">
+<%= render 'shared/mydoc' %>
 
-
-<%= link_to 'All Post', posts_path %>
-
-<p>
-  <%= @post.title %><br>
-  <%= time_ago @post.created_at %>
-</p>
-
-<p>
-  <%= @post.content %>
-</p>
-
-<h3>Comments</h3>
-
-<p>
-  <% @post.comments.approved.each.with_index(1) do |comment, index| %>
-    <%= comment.message %><b><%= double_digit_number(index) %></b><br>
-    <b><%= comment.visitor.fullname %> </b>commented:<%= time_ago comment.created_at %><hr>
-  <% end %>
-</p>
-
-<% if Setting.first.prevent_commenting %>
- <h2>Comments committing is block for now</h2>
- <% else %>
-<%= form_for @visitor_comment, url: comments_url do |f| %>
-  <% if session[:visitor_errors] %>
-  <div class="" id="error_explanation">
-    <h2><%= pluralize(session[:visitor_errors].count, "error") %> occur when try to save this comment:</h2>
-    <ul>
-      <% session[:visitor_errors].each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-
-   <p>
-     <%= f.label :fullname %>
-     <%= f.text_field :fullname %>
-   </p>
-
-   <p>
-     <%= f.label :email %>
-     <%= f.text_field :email %>
-   </p>
-
-  <%= f.fields_for :comments do |c| %>
-   <p>
-
-     <%= c.label :message %>
-     <%= c.text_area :message %>
-     <%= c.hidden_field :post_id, value: @post.id %>
-   </p>
-
+<div class="col-md-8">
+   <%= link_to posts_path do %>
+   <button type="button" class="btn btn-primary">All Post</button>
    <% end %>
 
-   <p><%= f.submit 'Add Comment' %></p>
-<% end %>
+				<article>
+					<h1>  <%= @post.title %><br></h1>
+            <footer><small><%= time_ago @post.created_at %></small></footer>
+						<div class="lead"><%= @post.content %></div>
+				</article>
+
+				<div id="comments">
+					<h2><span class="glyphicon glyphicon-fire"></span>      <%= @post.comments.approved.count %> Comments</h2><br>
+					<div class="row">
+						<div class="col-md-12">
+              <% @post.comments.approved.each.with_index(1) do |comment, index| %>
+                <div class="comment">
+									<div class="author-info">
+										<%= image_tag "cat.jpg", class:'author-image'%>
+										<div class="author-name">
+											<h4><%= comment.visitor.fullname %><small>  commented:<%= time_ago comment.created_at %></small></h4>
+
+										</div>
+
+									</div>
+									<div class="comment-content">
+										<%= comment.message %>
+									</div>
+
+	                <footer>
+
+	                </footer>
+	                <hr>
+                </div>
+
+
+              </div><!-- end col-11 -->
 
 
 
+          <% end %>
 
-   <% end %>
+            <% if Setting.first.prevent_commenting %>
+             <h3 style="color:red">Comments committing is block for now</h3>
+             <% else %>
+             <h3>Leave a Comment</h3>
+
+            <%= form_for @visitor_comment, url: comments_url do |f| %>
+              <% if session[:visitor_errors] %>
+              <p class="">
+              <div class="bg-danger" id="error_explanation">
+                <h2><%= pluralize(session[:visitor_errors].count, "error") %> occur when try to save this comment:</h2>
+                <ul>
+                  <% session[:visitor_errors].each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+             </p>
+             <% end %>
+            <form class="article-frm">
+                 <%= f.label :fullname %>
+                 <%= f.text_field :fullname, class:"form-control", placeholder:"How can I call you" %>
+
+
+
+                 <%= f.label :email %>
+                 <%= f.text_field :email, class:"form-control", placeholder:"Can you tpye in your Email Address" %>
+
+
+              <%= f.fields_for :comments do |c| %>
+
+                 <%= c.label :message %>
+                 <%= c.text_area :message, class:"form-control", placeholder:"Any comments you want leave" %>
+                 <%= c.hidden_field :post_id, value: @post.id %>
+
+               <% end %>
+               <%= f.submit 'Add Comment', class:"btn btn-primary" %>
+            <% end %>
+            <% end %>
+
+							<hr>
+						</form>
+				</div><!-- end comments -->
+			</div><!-- end col-8 -->
+			</div><!--end row -->
+	</div><!-- end container -->

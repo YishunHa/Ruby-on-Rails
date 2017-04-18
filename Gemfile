@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
  #paginator
  gem 'kaminari', '~> 1.0', '>= 1.0.1'
 
+ gem 'gravtastic'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

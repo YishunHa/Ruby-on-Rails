@@ -1,28 +1,34 @@
-<h1>Posts#index</h1>
+<div class="container">
+		<div class="row">
+<%= render 'shared/mydoc' %>
+			<div class="col-md-8">
+        <% @posts.each do |post| %>
+       <article>
+        <header><h2>
+          <%= truncate(post.title, length: 70, separator: ' ') %> <h2></header>
+          <footer><small><%= time_ago post.created_at %></small></footer>
 
-<%= link_to 'All Posts', posts_path %>
 
-<% @posts.each do |post| %>
 
-<p>
-  <%= truncate(post.title, length: 70, separator: ' ') %><br>
-  <%= time_ago post.created_at %>
+        <div class="lead">
+          <%= truncate(post.content, length: 104, separator: ' ') { link_to 'Read More', post_path(post) } %>
+        </div>
 
-</p>
 
-<p>
-  <%= truncate(post.content, length: 104, separator: ' ') { link_to 'Read More', post_path(post) } %>
-</p>
 
-<% if Setting.tag_visible? %>
-<p>
-  <% post.tags.each do |tag| %>
-  <%= link_to tag.name, posts_path(tag: tag.name) %>
-  <% end %>
-</p>
-<% end %>
-<hr>
-
-<% end %>
-
-<%= paginate @posts %>
+        <% if Setting.tag_visible? %>
+        <footer>
+          <% post.tags.each do |tag| %>
+          <span class="label label-info"><%= link_to tag.name, posts_path(tag: tag.name) %></span>
+          <% end %>
+        </footer>
+        <% end %>
+        <hr>
+      	</article><!-- end article -->
+        <% end %>
+        <ul class="text-center">
+          <%= paginate @posts %>
+        </ul>
+			</div><!-- end col-4 -->
+		</div><!-- end row -->
+	</div><!-- end container -->

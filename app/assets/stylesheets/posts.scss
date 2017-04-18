@@ -1,3 +1,33 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form-spacing-top{
+    margin-top: 20px;
+    font-size: 15pt;
+
+}
+
+.author-image {
+    width:50px;
+    height: 50px;
+    border-radius:50%;
+    float: left;
+}
+
+.comment {
+  margin-bottom: 45px;
+
+}
+
+.author-name {
+  float: left;
+  margin-left: 15px;
+
+}
+
+.comment-content {
+   margin-left: 65px;
+   clear: both;
+   font-size: 16px;
+   line-height: 1.3em;
+}
