@@ -11,4 +11,9 @@ validates :email, format: {with: /@/, message: 'email is not valid'}
   accepts_nested_attributes_for :comments
   accepts_nested_attributes_for :messages
 
+  after_save :notify
+
+  def notify
+    notifications.build.save
+  end
 end

@@ -6,7 +6,6 @@ class Post < ApplicationRecord
 
    validates :title, presence:true
    validates :content, presence:true
-   validates :publish, presence:false
 
   def self.matching_title_or_content search
   where("title LIKE ? OR content LIKE ?", "%#{search}%", "%#{search}%")

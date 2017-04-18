@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  after_filter :clear_sessions, only: [:show]
   def index
     if params[:tag]
     @posts = Post.filter_by_tags(params[:tag]).page(params[:page]).per(Setting.post_per_page)

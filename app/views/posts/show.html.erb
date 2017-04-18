@@ -21,7 +21,9 @@
   <% end %>
 </p>
 
-
+<% if Setting.first.prevent_commenting %>
+ <h2>Comments committing is block for now</h2>
+ <% else %>
 <%= form_for @visitor_comment, url: comments_url do |f| %>
   <% if session[:visitor_errors] %>
   <div class="" id="error_explanation">
@@ -56,3 +58,8 @@
 
    <p><%= f.submit 'Add Comment' %></p>
 <% end %>
+
+
+
+
+   <% end %>

@@ -6,7 +6,7 @@ class VisitorMessageService
   end
 
   def visitor
-    build_existing_visitor_message || build_new_visitor_message
+    build_new_visitor_message || build_existing_visitor_message
   end
 
   private

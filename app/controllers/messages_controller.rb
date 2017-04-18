@@ -6,10 +6,12 @@ class MessagesController < ApplicationController
   def create
     if visitor.save
       flash[:notice] = "Successfully send your message!"
-      redirect_to :back
+      redirect_to new_message_path
     else
+
       @visitor_message = visitor
       render :new
+    end
   end
 
   private
@@ -22,5 +24,4 @@ class MessagesController < ApplicationController
     @visitor ||= VisitorMessageService.new(strong_params).visitor
   end
 
-  end
 end

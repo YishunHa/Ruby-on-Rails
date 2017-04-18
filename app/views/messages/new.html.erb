@@ -1,4 +1,4 @@
-<h1>Messages#new</h1>
+<h1>Messages</h1>
 
 
 <%= form_for @visitor_message, url: messages_url do |f| %>
@@ -6,7 +6,7 @@
   <div class="" id="error_explanation">
     <h2><%= pluralize(@visitor_message.errors.count, "error") %> occur when try to send this message:</h2>
     <ul>
-      <% visitor_message.errors.full_messages.each do |message| %>
+      <% @visitor_message.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>

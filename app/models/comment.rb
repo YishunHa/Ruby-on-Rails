@@ -15,4 +15,11 @@ class Comment < ApplicationRecord
       false
     end
   end
+
+
+  after_save :notify
+
+  def notify
+    notifications.build.save
+  end
 end

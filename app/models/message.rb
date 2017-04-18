@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :visitor
+  belongs_to :visitor, required: false
 
   validates :content, presence: true
 
