@@ -1,10 +1,5 @@
-<div class="container">
-		<div class="row">
-<%= render 'shared/mydoc' %>
-
-
 <div class="col-md-8">
-
+   <%= render 'shared/message' %>
   <h1>Contact Me</h1>
 				<div class="lead">
 					On second thoughts, let's not go there. It is a silly place. Well, I didn't vote for you. Why do you think that she is a witch? And this isn't my nose. This is a false one. Who's that then? Found them? In Mercia?! The coconut's tropical!
@@ -44,8 +39,12 @@
      </p>
 
      <% end %>
+     <div class="col-md-4">
 
-     <p><%= f.submit 'Send message' %></p>
+     </div>
+
+     <p><%= f.submit 'Send message', class: 'btn btn-primary btn-lg btn-block' %></p>
+
   <% end %>
 </div>
 

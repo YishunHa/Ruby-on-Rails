@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'about/index'
 
   root to: 'posts#index'
 
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
   end
 
    resources :posts, only: [:index, :show]
+   resources :about, only: [:index]
    resources :messages, only: [:new, :create]
    resources :comments, only: [:create]
 
