@@ -1,0 +1,103 @@
+<script type="text/javascript">
+var longitude;
+var university =0;
+var result;
+
+navigator.geolocation.getCurrentPosition(getpostition, doesntwork);
+
+function doesntwork(){
+
+  console.log('There is an error when try to get the location!')
+}
+
+function getpostition(position)
+  {
+    latitude = position.coords.latitude;
+
+    longitude = position.coords.longitude;
+
+//		sessionStorage.setItem("latitude", "hekki");
+//		sessionStorage.setItem("longitude", "heiii");
+        console.log('Get current Location sucessful');
+      console.log('your loacation:'+'latitude: '+latitude +'  longitude: '+longitude);
+        initMap();
+    }
+
+
+function initMap() {
+  var pyrmont = {lat: latitude, lng: longitude};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: pyrmont,
+    zoom: 14,
+    disableDefaultUI: true,
+    zoomControl: true,
+    scaleControl: true,
+  });
+
+  infowindow = new google.maps.InfoWindow();
+
+  var service = new google.maps.places.PlacesService(map);
+  service.nearbySearch({
+    location: pyrmont,
+    radius: 5000,
+    types: ['university']
+  }, callback);
+
+
+
+
+}
+
+function callback(results, status) {
+      var marker2 = new google.maps.Marker({
+      position: {lat: latitude, lng: longitude},
+        animation: google.maps.Animation.DROP,
+        map: map,
+        title: 'Current location'
+        });
+       google.maps.event.addListener(marker2, 'click', function() {
+       infowindow.setContent("You are here");
+       infowindow.open(map, this);
+       });
+
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+      university = university + 1;
+      result = results[i];
+      console.log(results);
+      $("<p style='color: #000000; text-align: left' id='cinematotal'>Name: "+ result.name + " "+" " + " "+ "Rating:" + result.rating + "</br>" +"Address:" + " " + result.vicinity +"</p>").insertAfter("#cinematotal");
+    }
+  }
+
+
+    cinemas();
+}
+
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+
+}
+
+
+
+ function university(){
+  console.log("There are "+ university +" cinema around you.");
+  $("#cinematotal").html("There are " + university +" cinemas in total around you:")
+
+
+};
+
+</script>

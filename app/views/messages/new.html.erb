@@ -1,36 +1,40 @@
-<h1>Messages</h1>
+<%= render 'shared/mydoc' %>
+<div class="col-md-8">
+  <%= form_for @visitor_message, url: messages_url do |f| %>
+    <% if @visitor_message.errors.any? %>
+    <div class="" id="error_explanation">
+      <h2><%= pluralize(@visitor_message.errors.count, "error") %> occur when try to send this message:</h2>
+      <ul>
+        <% @visitor_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 
+     <p>
+       <%= f.label :fullname %>
+       <%= f.text_field :fullname %>
+     </p>
 
-<%= form_for @visitor_message, url: messages_url do |f| %>
-  <% if @visitor_message.errors.any? %>
-  <div class="" id="error_explanation">
-    <h2><%= pluralize(@visitor_message.errors.count, "error") %> occur when try to send this message:</h2>
-    <ul>
-      <% @visitor_message.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+     <p>
+       <%= f.label :email %>
+       <%= f.text_field :email %>
+     </p>
+
+    <%= f.fields_for :messages do |c| %>
+     <p>
+
+       <%= c.label :content %>
+       <%= c.text_area :content %>
+     </p>
+
+     <% end %>
+
+     <p><%= f.submit 'Send message' %></p>
   <% end %>
+</div>
 
-   <p>
-     <%= f.label :fullname %>
-     <%= f.text_field :fullname %>
-   </p>
-
-   <p>
-     <%= f.label :email %>
-     <%= f.text_field :email %>
-   </p>
-
-  <%= f.fields_for :messages do |c| %>
-   <p>
-
-     <%= c.label :content %>
-     <%= c.text_area :content %>
-   </p>
-
-   <% end %>
-
-   <p><%= f.submit 'Send message' %></p>
-<% end %>
+           </div><!-- end col-8 -->
+       </div><!--end row -->
+</div><!-- end container -->
