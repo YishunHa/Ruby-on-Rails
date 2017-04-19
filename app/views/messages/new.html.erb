@@ -1,8 +1,22 @@
+<div class="container">
+		<div class="row">
 <%= render 'shared/mydoc' %>
+
+
 <div class="col-md-8">
+
+  <h1>Contact Me</h1>
+				<div class="lead">
+					On second thoughts, let's not go there. It is a silly place. Well, I didn't vote for you. Why do you think that she is a witch? And this isn't my nose. This is a false one. Who's that then? Found them? In Mercia?! The coconut's tropical!
+				</div>
+				<hr>
+				<p>twitter:<a href="http://twitter.com" target="_yal0858"> @Yishun</a></p>
+				<p>github:<a href="http://github.com" target="_YishunHa"> YishunHa</a></p>
+				<hr>
+
   <%= form_for @visitor_message, url: messages_url do |f| %>
     <% if @visitor_message.errors.any? %>
-    <div class="" id="error_explanation">
+    <div class="bg-danger" id="error_explanation">
       <h2><%= pluralize(@visitor_message.errors.count, "error") %> occur when try to send this message:</h2>
       <ul>
         <% @visitor_message.errors.full_messages.each do |message| %>
@@ -14,19 +28,19 @@
 
      <p>
        <%= f.label :fullname %>
-       <%= f.text_field :fullname %>
+       <%= f.text_field :fullname, class:"form-control", placeholder:"How can I call you" %>
      </p>
 
      <p>
        <%= f.label :email %>
-       <%= f.text_field :email %>
+       <%= f.text_field :email, class:"form-control", placeholder:"Can you tpye in your Email Address"  %>
      </p>
 
     <%= f.fields_for :messages do |c| %>
      <p>
 
        <%= c.label :content %>
-       <%= c.text_area :content %>
+       <%= c.text_area :content , class:"form-control", placeholder:"Anything you want told me?"%>
      </p>
 
      <% end %>
