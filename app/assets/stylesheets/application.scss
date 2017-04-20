@@ -12,8 +12,8 @@
  *
  *= require default
  *= require posts
-
-
+ *= require login
+ *= require_tree .
 
  */
 @import "bootstrap-sprockets";

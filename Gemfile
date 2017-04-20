@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 
  gem 'gravtastic'
-
+gem 'sprockets-rails'
 #bootstrap-sass
  gem 'bootstrap-sass', '~> 3.3.6'
 

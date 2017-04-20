@@ -1,15 +1,13 @@
-html,body{
-	height: 1000px;
-}
 
-.container{
+
+.container2{
 	display: table;  /*** attaches a table for alignment **/
 	max-width: 400px;
 	height: 100%;
 	min-height: 100%;
 
 }
-.form-signin{
+.form-signin2{
 	display: table-cell;   /****  attaches a table cell for alignment ****/
 	vertical-align: middle;
 }
