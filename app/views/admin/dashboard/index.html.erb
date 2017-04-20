@@ -1,67 +1,113 @@
 <h1>Dashboard</h1>
 
+<div id="dashboard-con">
+				<div class="row">
+					<div class="col-md-6 dashboard-left-cell">
+						<div class="admin-content-con">
+							<header class="clearfix">
+								<h5 class="pull-left">Articles</h5>
+                <%= link_to new_admin_post_path do%>
+								<div class="btn btn-xs btn-primary pull-right" href="#" role="button">Crete new article</div>
+                <% end %>
+							</header>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>title</th>
+										<th>replies</th>
+										<th>dates</th>
+										<th>actions</th>
+									</tr>
+								</thead>
+								<tbody>
+                  <% @posts.each do |post| %>
+									<tr>
+										<td><%=truncate(post.title, length: 40, separator: '') %></td>
+										<td><%= post.comments.count %></td>
+										<td><%= time_ago post.created_at %></td>
+										<td>
+                      <%= link_to edit_admin_post_path(post) do%>
+											<div class="btn btn-xs btn-warning" role="button">edit</div>
+                      <% end %>
 
-<h2>Post</h2>
-<%= link_to 'creat new post', new_admin_post_path %>
-<%= link_to 'list post', admin_posts_path %>
+                      <%= link_to admin_post_path(post) do %>
+											<div class="btn btn-xs btn-primary" role="button">view</div>
+                      <% end %>
 
-<table class="table table-bordered table-hover" >
-  <thead>
-    <tr>
-      <th>title</th>
-      <th>replies</th>
-      <th>date</th>
-      <th>actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td><%=truncate(post.title, length: 40, separator: '') %></td>
-      <td><%= post.comments.count %></td>
-      <td><%= time_ago post.created_at %></td>
-      <td>
-        <%= link_to 'edit', edit_admin_post_path(post) %>
-        <%= link_to 'view', admin_post_path(post) %>
-        <%= link_to 'delete', admin_post_path(post), method: :delete, data: {confirm: 'Are you sure?'} %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+                      <!-- <%= link_to admin_post_path(post), method: :delete, data: {confirm: 'Are you sure?'} do %>
+											<div class="btn btn-xs btn-danger" role="button">del</div>
+                      <% end %> -->
+										</td>
+									</tr>
+                  <% end %>
+								</tbody>
+							</table>
+							<div class="clearfix">
+                <%= link_to admin_posts_path do%>
+								<div class="pull-right text-link">view all articles</div>
+                <% end %>
+							</div>
+						</div>
+					</div><!-- end col-6 -->
+					<div class="col-md-6 dashboard-right-cell">
+						<div class="admin-content-con">
+							<header>
+								<h5>Comments</h5>
+							</header>
+              <% @comments.each do |comment| %>
+							<div class="comment-head-dash clearfix">
+								<div class="commenter-name-dash pull-left"><%= comment.visitor.fullname %></div>
+								<div class="days-dash pull-right"><%= time_ago comment.visitor.created_at %></div>
+							</div>
 
-<h2>Comment</h2>
-<%= link_to 'list all comments', admin_comments_path %>
+								<p class="comment-dash"><%= truncate(comment.message, length:125, separator: '') %></p>
+								<small class="comment-date-dash"><%= time_ago comment.created_at %></small>
+								<hr>
+              <% end %>
+								<div class="clearfix">
+                  <%= link_to admin_comments_path(status: false || true) do%>
+									<div href="" class="pull-right text-link">view all comments</div>
+                  <% end %>
+								</div>
 
-<% @comments.each do |comment| %>
-  <p><%= comment.visitor.fullname %></p>
-  <p><%= truncate(comment.message, length:125, separator: '') %></p>
-  <p><%= time_ago comment.created_at %></p>
-  <hr>
-<% end %>
+					</div><!-- end col-6 -->
+				</div><!-- end row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="admin-content-con clearfix">
+							<header>
+								<h5>Commenters</h5>
+							</header>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Full Name</th>
+										<th>Email</th>
+										<th>Status</th>
+										<th>Created</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+                  <% @visitors.each_with_index do |visitor, index| %>
+									<tr>
+										<td><%= index + 1 %></td>
+										<td><%= visitor.fullname %></td>
+										<td><%= visitor.email %></td>
+										<td><a href="#" class="label label-default">Active</a></td>
+										<td><%= time_ago visitor.created_at %></td>
+										<td>
+                      <%= link_to admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you serious?'} do %>
+                      <div href="#" class="label label-danger">Delete</div>
+                      <% end %>
 
-<h2>Visitors</h2>
-<table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Full name</th>
-        <th>Email</th>
-        <th>Created</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @visitors.each_with_index do |visitor, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= visitor.fullname %></td>
-        <td><%= visitor.email %></td>
-        <td><%= time_ago visitor.created_at %></td>
-        <td>
-          <%= link_to 'delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you serious?'} %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-</table>
+                    </td>
+									</tr>
+                  <% end %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div><!-- end row -->
+			</div>

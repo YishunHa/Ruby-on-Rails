@@ -1,8 +1,5 @@
-<div class="container">
-		<div class="row">
-<%= render 'shared/mydoc' %>
-
 <div class="col-md-8">
+     <%= render 'shared/message' %>
    <%= link_to posts_path do %>
    <button type="button" class="btn btn-primary">All Post</button>
    <% end %>
@@ -77,9 +74,9 @@
                  <%= c.label :message %>
                  <%= c.text_area :message, class:"form-control", placeholder:"Any comments you want leave" %>
                  <%= c.hidden_field :post_id, value: @post.id %>
-
+                  <br>
                <% end %>
-               <%= f.submit 'Add Comment', class:"btn btn-primary" %>
+               <%= f.submit 'Add Comment', class:"btn btn-success btn-block" %>
             <% end %>
             <% end %>
 
@@ -90,3 +87,11 @@
 			</div><!-- end col-8 -->
 			</div><!--end row -->
 	</div><!-- end container -->
+
+
+  <% content_for :head do %>
+    All Post
+  <% end %>
+
+  <% content_for :active1 do %>"active"
+	<% end %>

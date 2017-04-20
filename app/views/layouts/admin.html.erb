@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyOnRails</title>
+    <title>Admin</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <style media="screen">
+    <%= render 'admin/shared/style' %>
+    </style>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-   <% if flash[:notice] %>
+    <div class="container-fluid display-table">
+  		<div class="row display-table-row">
+   <!-- <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
    <% end %>
 
    <% if flash[:alert] %>
     <div class="alert"><%= flash[:alert] %></div>
-   <% end %>
+   <% end %> -->
 
-   <%= link_to 'Log out', logout_path %>
 
-   <p>
-        <%= link_to 'Posts', admin_posts_path %>
-        <%= link_to 'Moderators', admin_moderators_path %>
-        <%= link_to 'Tags', new_admin_tag_path %>
-        <%= link_to 'Comments', admin_comments_path %>
-        <%= link_to 'Visitors', admin_visitors_path %>
-        <%= link_to 'Mesasge', admin_messages_path %>
-        <%= link_to 'Notifications', admin_notifications_path %>
-        <%= link_to 'Dashboard', admin_dashboard_index_path %>
-        <%= link_to 'Setting', new_admin_setting_path %>
-   </p>
+
+
+    <%= render 'admin/shared/nav' %>
 
     <%= yield %>
+    <!-- Footer -->
+				<div class="row">
+					<footer id="admin-footer" class="clearfix">
+						<div class="pull-left"><b>Copyright </b>&copy; 2017</div>
+						<div class="pull-right">admin system</div>
+					</footer>
+				</div><!-- footer end row -->
+		<!-- End Footer -->
+
+
+  </div><!-- end col-10 -->
+
+</div><!-- end row -->
+</div><!-- end container -->
   </body>
 </html>

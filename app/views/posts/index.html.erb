@@ -1,7 +1,5 @@
-<div class="container">
-		<div class="row">
-<%= render 'shared/mydoc' %>
-			<div class="col-md-8">
+
+	<div class="col-md-8">
         <% @posts.each do |post| %>
        <article>
         <header><h2>
@@ -32,3 +30,10 @@
 			</div><!-- end col-4 -->
 		</div><!-- end row -->
 	</div><!-- end container -->
+
+	<% content_for :head do %>
+	  All Post
+	<% end %>
+
+	<% content_for :active1 do %>"active"
+	<% end %>

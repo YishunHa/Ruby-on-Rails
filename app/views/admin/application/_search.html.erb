@@ -1,4 +1,15 @@
-<%= form_tag(route, method: :get) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search' %>
-<% end %>
+
+
+<div class="row search-row">
+  <div class="col-md-12">
+    <div class="input-group">
+      <%= form_tag(route, method: :get) do %>
+      <%= text_field_tag :search do%>
+      <input type="text" class="form-control search-field" id="search" placeholder="Search">
+      <% end %>
+
+        <%= submit_tag 'Go', class:"btn btn-primary"%>
+    </div>
+        <% end %>
+  </div>
+</div><!-- end row -->
