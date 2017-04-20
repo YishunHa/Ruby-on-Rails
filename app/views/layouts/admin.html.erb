@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyOnRails</title>
+    <title>Admin</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <style media="screen">
-    html, body{
-     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-     background-color: #f3f3f4;
-     color: #676a6c;
-     height: 100%;
-     }
-
-
-     .box{
-      border: 1px red dotted;
-     }
+    <%= render 'admin/shared/style' %>
     </style>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -37,5 +27,19 @@
     <%= render 'admin/shared/nav' %>
 
     <%= yield %>
+    <!-- Footer -->
+				<div class="row">
+					<footer id="admin-footer" class="clearfix">
+						<div class="pull-left"><b>Copyright </b>&copy; 2017</div>
+						<div class="pull-right">admin system</div>
+					</footer>
+				</div><!-- footer end row -->
+		<!-- End Footer -->
+
+
+  </div><!-- end col-10 -->
+
+</div><!-- end row -->
+</div><!-- end container -->
   </body>
 </html>
