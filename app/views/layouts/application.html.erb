@@ -4,8 +4,9 @@
 
     <title><%= yield :head %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+          <%= yield :map %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= yield :costomcss %>
   </head>
 
@@ -20,6 +21,5 @@
 
     <%= yield %>
   </body>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA58auOqF6wOraSfv_yWc2EAvHx4s_3PY&libraries=places&callback" async>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </html>
