@@ -1,12 +1,39 @@
 <h1>Visitors</h1>
 
 
-<% @visitors.each do |visitor| %>
-   <p><%= visitor.fullname %></p>
-   <p><%= visitor.email %></p>
-   <p><%= time_ago visitor.created_at %></p>
-   <p><%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you serious?'} %></p>
 
-<% end %>
+<div class="col-md-12">
+  <div class="admin-content-con clearfix">
+    <header>
+      <h5>Commenters</h5>
+    </header>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visitors.each do |visitor| %>
+        <tr>
+          <td><%= visitor.fullname %></td>
+          <td><%= visitor.email %></td>
+          <td><div href="#" class="label label-default">Active</div></td>
+          <td><%= time_ago visitor.created_at %></td>
+          <td>
+            <%= link_to admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you serious?'} do%>
+            <div href="#" class="label label-danger">Delete</div>
+            <% end %>
 
-<%= paginate @visitors %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= paginate @visitors %>
+</div>
