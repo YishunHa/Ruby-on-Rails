@@ -2,7 +2,7 @@
 
 <%=
    if Notification.any?
-     link_to 'Dismiss all', dismiss_all_notifications_path, method: :delete
+     link_to 'Dismiss all', dismiss_all_notifications_path, method: :delete, class:"btn btn-lg btn-warning"
    end
 %>
 
@@ -10,7 +10,7 @@
 
 <p>
   <%= "#{notif.notifiable.fullname} added as a new visitor #{time_ago notif.created_at} " %>
-  <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-warning"%>
 </p>
 
 <% end %>
@@ -18,7 +18,7 @@
 <% @comment_notifications.each do |notif| %>
 <p>
   <%= "#{notif.notifiable.visitor.fullname} added a  comment #{time_ago notif.created_at} " %>
-  <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-warning" %>
 </p>
 
 <% end %>
