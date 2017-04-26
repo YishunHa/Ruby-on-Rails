@@ -15,6 +15,8 @@ moderator = Moderator.create(
 post = Post.create(
   title: Faker::Lorem.sentence(20),
   content: Faker::Lorem.paragraph,
+  latitude: Faker::Address.latitude,
+  longitude: Faker::Address.longitude,
   publish: true,
   moderator: moderator
 )

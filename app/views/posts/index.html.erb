@@ -9,7 +9,7 @@
 
 
         <div class="lead">
-          <%= truncate(post.content, length: 104, separator: ' ') { link_to 'Read More', post_path(post) } %>
+          <%= truncate(post.content, length: 75, separator: ' ') { link_to 'Read More', post_path(post) } %>
         </div>
 
 

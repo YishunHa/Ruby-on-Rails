@@ -1,3 +1,7 @@
+<% content_for :map do %>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA58auOqF6wOraSfv_yWc2EAvHx4s_3PY&libraries=places&callback" async>
+<% end %>
+
 <div class="col-md-8">
      <%= render 'shared/message' %>
    <%= link_to posts_path do %>
@@ -7,7 +11,12 @@
 				<article>
 					<h1>  <%= @post.title %><br></h1>
             <footer><small><%= time_ago @post.created_at %></small></footer>
-						<div class="lead"><%= @post.content %></div>
+						<div class="lead"><%= @post.content %><br>
+              <div id="map" style="width:600px; height:400px;"></div>
+              <%= @post.longitude %>;
+              <%= @post.latitude %>
+            </div>
+
 				</article>
 
 				<div id="comments">
@@ -36,6 +45,7 @@
 
 
               </div><!-- end col-12 -->
+          <%= render 'shared/showlocation' %>
 
 
 

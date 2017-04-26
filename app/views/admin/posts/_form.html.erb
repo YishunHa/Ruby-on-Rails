@@ -25,6 +25,14 @@
                <%= f.text_field :content, class:"form-control", placeholder:"Any new to write about?"  %>
                <br>
 
+               <% f.label :latitude %><br>
+               <%= f.text_field :latitude, class:"form-control", placeholder:"Where are you?"  %>
+               <br>
+
+               <% f.label :longitude %><br>
+               <%= f.text_field :longitude, class:"form-control", placeholder:"Where are you?"  %>
+               <br>
+
               <p>
                 <%= f.label :publish %>
                 <%= f.check_box  :publish%>

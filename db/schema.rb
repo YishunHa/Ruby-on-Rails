@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418031556) do
+ActiveRecord::Schema.define(version: 20170426152918) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "message"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 20170418031556) do
     t.integer  "moderator_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["moderator_id"], name: "index_posts_on_moderator_id"
   end
 

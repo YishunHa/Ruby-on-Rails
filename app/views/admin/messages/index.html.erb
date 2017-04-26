@@ -6,16 +6,16 @@
 
 <% @messages.each do |message| %>
 <p style=<%= message_weight(message) %>>
-  <%= message.visitor.fullname %>  <label href="#" class="label label-default"><%= status_converter(message.status, truthy: 'Read', falsey: 'Un-Read') %></label>
+  <b>From:</b><%= message.visitor.fullname %>  <label href="#" class="label label-default"><%= status_converter(message.status, truthy: 'Read', falsey: 'Un-Read') %></label>
   <br>
-  <%= truncate(message.content, length: 200, separator: '') %><br>
+  <b>Content:</b><%= truncate(message.content, length: 200, separator: '') %><br>
 
 
-  <%= time_ago(message.created_at) %><br>
-   <%= build_read_status_link message %>
+  <b>When:</b><%= time_ago(message.created_at) %><br><br>
+   <b>Status:</b><%= build_read_status_link message %><br>
 
-  <%= link_to 'Show', admin_message_path(message), class:"btn btn-default" %>
-  <%= link_to 'Delete', admin_message_path(message), method: :delete, data: {confirm: 'Are you serious?'}, class:"btn btn-danger" %>
+  <b>Action:</b><%= link_to 'Show', admin_message_path(message), class:"btn btn-default btn-xs" %>
+  <%= link_to 'Delete', admin_message_path(message), method: :delete, data: {confirm: 'Are you serious?'}, class:"btn btn-danger btn-xs" %>
 </p>
 
 <p>
